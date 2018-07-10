@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  <context id="context1" >
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.3.144:3308/east_login" userId="root" password="cocomo5688" />
+    <javaModelGenerator targetPackage="com.persistence.login.bean" targetProject="kkd_http_login" />
+    <sqlMapGenerator targetPackage="mapp.login" targetProject="kkd_http_login" />
+    <javaClientGenerator targetPackage="com.persistence.login.mapp" targetProject="kkd_http_login" type="XMLMAPPER" />
+    
+    <!-- 
+    <table schema="east_login" tableName="t_data_clear_version" domainObjectName="DataClearVersionEntity" >
+		<columnRenamingRule searchString="^f_" replaceString=""/>
+    </table>
+	<table schema="east_login" tableName="t_data_pack" domainObjectName="DataPackEntity" >
+		<columnRenamingRule searchString="^f_" replaceString=""/>
+    </table>
+ 	<table schema="east_login" tableName="t_server" domainObjectName="ServerEntity" >
+		<columnRenamingRule searchString="^f_" replaceString=""/>
+    </table>
+    <table schema="east_login" tableName="t_role" domainObjectName="RoleEntity" >
+		<columnRenamingRule searchString="^f_" replaceString=""/>
+    </table>
+    <table schema="east_login" tableName="t_user" domainObjectName="UserEntity" >
+		<columnRenamingRule searchString="^f_" replaceString=""/>
+    </table>
+    <table schema="east_login" tableName="t_function" domainObjectName="FunctionEntity" >
+		<columnRenamingRule searchString="^f_" replaceString=""/>
+    </table>
+    -->
+	<table schema="east_login" tableName="t_server" domainObjectName="ServerEntity" >
+		<columnRenamingRule searchString="^f_" replaceString=""/>
+    </table>
+  </context>
+</generatorConfiguration>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+	<!-- 主控制台输出 begin -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="ALL" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d][%p,%c{1}] %m%n" />
+			<!-- [%d][%p,%c{1}]  -->
+		</layout>
+	</appender>
+	<!-- 主控文件输出 begin -->
+	<appender name="AsyncAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="5120" />
+		<appender-ref ref="FileAppender" />
+	</appender>
+	<appender name="FileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+			<param name="FileNamePattern" value="./logs/test.log.%d{yyyyMMddHH}" />
+		</rollingPolicy>
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- <param name="ConversionPattern" value="[%d][%p,%c]%m%n" /> -->
+			<param name="ConversionPattern" value="[%d][%p,%c]%m%n" />
+		</layout>
+	</appender>	
+	<logger name="com.game.module.army.ai">
+		<level value="info" />
+	</logger>
+	<logger name="org.apache.ibatis">
+		<level value="info" />
+	</logger>
+	<logger name="com.game.persistence.dynamic.mapp">
+		<level value="info" />
+	</logger>
+	
+	
+	<appender name="RoleCreateFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/login/create.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="roleCreate" additivity="true">
+	    <appender-ref ref="RoleCreateFileAppender"/>
+	</logger>
+	
+	
+	<appender name="RoleLoginFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/login/login.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="roleLogin" additivity="true">
+	    <appender-ref ref="RoleLoginFileAppender"/>
+	</logger>	
+	
+	
+	<appender name="ExpFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/role/exp.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="exp" additivity="false">
+	    <appender-ref ref="ExpFileAppender"/>
+	</logger>		
+	
+	
+	<appender name="CoinFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/curr/coin.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="coin" additivity="true">
+	    <appender-ref ref="CoinFileAppender"/>
+	</logger>		
+	
+	
+	<appender name="IngotFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/curr/ingot.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="ingot" additivity="true">
+	    <appender-ref ref="IngotFileAppender"/>
+	</logger>		
+	
+	<appender name="RechargeFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/recharge/recharge.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="recharge" additivity="true">
+	    <appender-ref ref="RechargeFileAppender"/>
+	</logger>
+	
+	<appender name="RechargeOrderFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/recharge/rechargeorder.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="rechargeorder" additivity="true">
+	    <appender-ref ref="RechargeOrderFileAppender"/>
+	</logger>
+	
+	<appender name="ItemFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/item/item.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="item" additivity="false">
+	    <appender-ref ref="ItemFileAppender"/>
+	</logger>
+	
+	<appender name="StageFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/stage/stage.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="stage" additivity="false">
+	    <appender-ref ref="StageFileAppender"/>
+	</logger>
+	
+	<appender name="ArenaFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/arena/arena.log.%d{yyyyMMdd}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="arena" additivity="false">
+	    <appender-ref ref="ArenaFileAppender"/>
+	</logger>
+
+	<appender name="SpFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/role/sp.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="sp" additivity="true">
+	    <appender-ref ref="SpFileAppender"/>
+	</logger>	
+	
+	<appender name="AchieveFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/achieve/achieve.log.%d{yyyyMMdd}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="achieve" additivity="false">
+	    <appender-ref ref="AchieveFileAppender"/>
+	</logger>	
+	
+	
+	<appender name="ActivityLoginFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/activity/activitylogin.log.%d{yyyyMMdd}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="activitylogin" additivity="false">
+	    <appender-ref ref="ActivityLoginFileAppender"/>
+	</logger>		
+	
+	<appender name="ActivitySignFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/activity/activitysign.log.%d{yyyyMMdd}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="activitysign" additivity="false">
+	    <appender-ref ref="ActivitySignFileAppender"/>
+	</logger>	
+	
+	
+	<appender name="ActivityMediaFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/activity/activitymedia.log.%d{yyyyMMdd}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="activitymedia" additivity="false">
+	    <appender-ref ref="ActivityMediaFileAppender"/>
+	</logger>		
+	
+	
+	<appender name="PetFileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
+	    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+	        <param name="FileNamePattern" value="./logs/pet/pet.log.%d{yyyyMMddHH}"/>
+	    </rollingPolicy>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n"/>
+	    </layout>
+	</appender>
+	<logger name="pet" additivity="false">
+	    <appender-ref ref="PetFileAppender"/>
+	</logger>	
+	
+	
+	
+	<root>
+		<level value="INFO" />
+		<!-- 注:部署时,只用 FileAppender 开发时只用Console -->
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="AsyncAppender" />
+	</root>
+</log4j:configuration>
+

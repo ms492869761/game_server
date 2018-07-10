@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="${east_login.url}" />
+				<property name="username" value="${east_login.username}" />
+				<property name="password" value="${east_login.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+	<mapper resource="mapp/login/DataClearVersionEntityMapper.xml"/>
+	<mapper resource="mapp/login/DataPackEntityMapper.xml"/>
+	<mapper resource="mapp/login/ServerEntityMapper.xml"/>
+	<mapper resource="mapp/login/UserEntityMapper.xml"/>
+	<mapper resource="mapp/login/RoleEntityMapper.xml"/>
+	<mapper resource="mapp/login/FunctionEntityMapper.xml"/>
+	</mappers>
+</configuration>
